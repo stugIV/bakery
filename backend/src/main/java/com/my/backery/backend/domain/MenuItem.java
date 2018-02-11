@@ -15,7 +15,7 @@ import java.io.Serializable;
 public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id", nullable = false)
     private Integer id;
 
     @Column(name = "item_name")

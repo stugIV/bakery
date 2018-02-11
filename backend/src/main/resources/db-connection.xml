@@ -22,9 +22,9 @@
         <property name="removeAbandonedTimeout" value="180"/>
     </bean>
 
-    <bean id="eeDataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-        <property name="dataSource" ref="dataSource" />
-    </bean>
+    <!--<bean id="eeDataSourceTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">-->
+        <!--<property name="dataSource" ref="dataSource" />-->
+    <!--</bean>-->
 
     <bean id="jdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <constructor-arg ref="dataSource" />
