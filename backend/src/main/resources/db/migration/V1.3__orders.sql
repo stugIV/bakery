@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS orders
+(
+  id SERIAL PRIMARY KEY,
+  items INTEGER REFERENCES order_item(id)
+);

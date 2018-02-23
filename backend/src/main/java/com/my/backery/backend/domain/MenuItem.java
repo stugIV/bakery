@@ -10,8 +10,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "menu")
 @Data
-//@AllArgsConstructor
-//@NoArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,35 +24,9 @@ public class MenuItem {
     @Column(name = "price", nullable = false)
     private Double price;
 
-    public MenuItem() {
-
-    }
-
-    public MenuItem(Integer id, String itemName, Double price) {
-        this.id = id;
-        this.itemName = itemName;
-        this.price = price;
-    }
-
     public MenuItem(MenuItem m) {
         id = m.getId();
         itemName = m.getItemName();
         price = m.getPrice();
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getItemName() {
-        return itemName;
-    }
-
-    public void setItemName(String itemName) {
-        this.itemName = itemName;
     }
 }

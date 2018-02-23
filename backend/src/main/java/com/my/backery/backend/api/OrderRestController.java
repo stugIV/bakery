@@ -1,9 +1,7 @@
 package com.my.backery.backend.api;
 
-import com.my.backery.backend.domain.MenuItem;
 import com.my.backery.backend.domain.Order;
 import com.my.backery.backend.domain.OrderItem;
-import com.my.backery.backend.service.MenuRepository;
 import com.my.backery.backend.service.OrderItemRepository;
 import com.my.backery.backend.service.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +24,11 @@ public class OrderRestController {
     @Autowired
     private OrderRepository orderRepository;
 
-    @Autowired
-    private MenuRepository menuRepository;
-
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity createOrder() {
-        Order o = orderRepository.save(new Order());
+    public ResponseEntity createOrder(@RequestBody Order order) {
+        for(OrderItem item:order.getItems())
+            orderItemRepository.saveAndFlush(item);
+        Order o = orderRepository.save(order);
         return new ResponseEntity(o.getId(), HttpStatus.OK);
     }
 
@@ -49,17 +46,11 @@ public class OrderRestController {
     }
 
     @RequestMapping(method = RequestMethod.PUT)
-    public ResponseEntity<Order> modifyOrder(@RequestParam(name="id") Integer orderId, @RequestBody List<OrderItem> items) {
+    public ResponseEntity<Order> modifyOrder(@RequestParam(name="id") Integer orderId,
+                                             @RequestBody List<OrderItem> items) {
         Order order = orderRepository.findOne(orderId);
         if (order == null)
             return ResponseEntity.notFound().build();
         return new ResponseEntity<Order>(order, HttpStatus.OK);
     }
-
-/*    @ModelAttribute("menuItem")
-    public MenuItem getMenuItem(@RequestParam Integer id){
-        if (id != null)
-            return menuRepository.findOne(id);
-        return null;
-    }*/
 }

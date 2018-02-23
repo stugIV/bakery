@@ -26,8 +26,7 @@ public class OrderItem implements Serializable {
     public OrderItem() {
 
     }
-//    @Column(name = "menu_item")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "menu_item")
     private MenuItem menuItem;
 
