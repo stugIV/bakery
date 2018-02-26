@@ -4,5 +4,3 @@ CREATE TABLE IF NOT EXISTS menu
   item_name VARCHAR,
   price REAL NOT NULL
 );
-
-CREATE sequence IF NOT EXISTS hibernate_sequence;

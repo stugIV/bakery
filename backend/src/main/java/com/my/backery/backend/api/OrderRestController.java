@@ -4,9 +4,12 @@ import com.my.backery.backend.domain.Order;
 import com.my.backery.backend.domain.OrderItem;
 import com.my.backery.backend.service.OrderItemRepository;
 import com.my.backery.backend.service.OrderRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -18,18 +21,22 @@ import java.util.Optional;
 @RequestMapping("/order")
 public class OrderRestController {
 
+    private final Logger logger = LoggerFactory.getLogger(getClass());
     @Autowired
     private OrderItemRepository orderItemRepository;
 
     @Autowired
     private OrderRepository orderRepository;
 
+    @Transactional
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createOrder(@RequestBody Order order) {
-        for(OrderItem item:order.getItems())
-            orderItemRepository.saveAndFlush(item);
         Order o = orderRepository.save(order);
-        return new ResponseEntity(o.getId(), HttpStatus.OK);
+        for(OrderItem item:order.getItems()) {
+            item.setOrder(o);
+            orderItemRepository.save(item);
+        }
+        return new ResponseEntity(order.getId(), HttpStatus.OK);
     }
 
     @RequestMapping(method = RequestMethod.GET)

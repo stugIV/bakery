@@ -1,5 +1,6 @@
 package com.my.backery.backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,47 +11,25 @@ import java.io.Serializable;
 @Entity
 @Table(name  = "order_item")
 @Data
-//@NoArgsConstructor
-//@AllArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class OrderItem implements Serializable {
 
     private static final long SerialVersionUID = -6759934985430646146L;
     @Id
-    @Column(name = "id")
+    @Column(name = "order_item_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "quantity")
     private Integer quantity;
 
-    public OrderItem() {
-
-    }
     @ManyToOne
-    @JoinColumn(name = "menu_item")
-    private MenuItem menuItem;
+    @JoinColumn(name = "order_id")
+    @JsonIgnore
+    private Order order;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
-    }
-
-    public MenuItem getMenuItem() {
-        return menuItem;
-    }
-
-    public void setMenuItem(MenuItem menuItem) {
-        this.menuItem = menuItem;
-    }
+//    @ManyToOne
+//    @JoinColumn(name = "menu_item")
+//    private MenuItem menuItem;
 }
