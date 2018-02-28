@@ -1,5 +1,6 @@
 package com.my.backery.backend.api;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.my.backery.backend.domain.Order;
 import com.my.backery.backend.domain.OrderItem;
 import com.my.backery.backend.service.OrderItemRepository;
@@ -40,6 +41,7 @@ public class OrderRestController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
+    @JsonView(View.OrderView.class)
     public ResponseEntity getOrders(@RequestParam(name="id") Optional<Integer> orderId) {
         Collection<Order> orders = Collections.emptyList();
         if (!orderId.isPresent())

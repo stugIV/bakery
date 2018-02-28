@@ -1,5 +1,7 @@
 package com.my.backery.backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.my.backery.backend.api.View;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,12 +18,13 @@ public class Order implements Serializable {
     @Id
     @Column(name = "order_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonView(View.OrderView.class)
     private Integer id;
 
     @Column(name = "status")
     private int status;
 
-    @OneToMany(mappedBy = "order")//(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "id")
+    @OneToMany(mappedBy = "order")
+    @JsonView(View.OrderView.class)
     private List<OrderItem> items;
 }

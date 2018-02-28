@@ -1,5 +1,6 @@
 package com.my.backery.backend.api;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.my.backery.backend.domain.MenuItem;
 import com.my.backery.backend.service.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class MenuRESTController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
+    @JsonView(View.MenuView.class)
     ResponseEntity get(){
         List<MenuItem> menu = menuRepository.findAll();
         return new ResponseEntity(menu, HttpStatus.OK);

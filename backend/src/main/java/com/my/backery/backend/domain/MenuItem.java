@@ -1,11 +1,13 @@
 package com.my.backery.backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.my.backery.backend.api.View;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "menu")
@@ -16,12 +18,15 @@ public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
+    @JsonView({View.MenuView.class, View.OrderView.class})
     private Integer id;
 
     @Column(name = "item_name")
+    @JsonView({View.MenuView.class, View.OrderView.class})
     private String itemName;
 
     @Column(name = "price", nullable = false)
+    @JsonView(View.MenuView.class)
     private Double price;
 
     public MenuItem(MenuItem m) {
@@ -29,4 +34,8 @@ public class MenuItem {
         itemName = m.getItemName();
         price = m.getPrice();
     }
+
+    @OneToMany(mappedBy = "menuItem")
+    @JsonView(View.MenuView.class)
+    private List<OrderItem> orderItems;
 }
