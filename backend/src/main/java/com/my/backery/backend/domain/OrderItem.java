@@ -24,9 +24,9 @@ public class OrderItem implements Serializable {
     @JsonView({View.OrderView.class, View.MenuView.class})
     private Integer id;
 
-    @Column(name = "quantity")
+    @Column(name = "amount")
     @JsonView({View.OrderView.class, View.MenuView.class})
-    private Integer quantity;
+    private Integer amount;
 
     @ManyToOne
     @JoinColumn(name = "order_id")

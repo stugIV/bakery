@@ -36,6 +36,6 @@ public class MenuItem {
     }
 
     @OneToMany(mappedBy = "menuItem")
-    @JsonView(View.MenuView.class)
+//    @JsonView(View.MenuView.class)
     private List<OrderItem> orderItems;
 }

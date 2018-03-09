@@ -33,6 +33,6 @@ public class FromJson {
     public void orderItemFromJson() throws Exception {
         String orderItemJ = new String("{\"menuItem\": 1}");
         OrderItem oi = mapper.readValue(orderItemJ, OrderItem.class);
-        assertThat(oi.getQuantity(), is(1));
+        assertThat(oi.getAmount(), is(1));
     }
 }
