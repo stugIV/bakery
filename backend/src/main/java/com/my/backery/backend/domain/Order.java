@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,16 +16,27 @@ import java.util.List;
 @Table(name = "orders")
 public class Order implements Serializable {
 
+    public enum Status { NEW, APPROVED, READY, ISSUED}
+
     @Id
     @Column(name = "order_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonView(View.OrderView.class)
     private Integer id;
 
-    @Column(name = "status")
-    private int status;
-
     @OneToMany(mappedBy = "order")
     @JsonView(View.OrderView.class)
     private List<OrderItem> items;
+
+    @Column(name="created")
+    @JsonView(View.OrderView.class)
+    private Date created;
+
+    @Column(name="status")
+    @JsonView(View.OrderView.class)
+    private Status status;
+
+    @Column(name="cost")
+    @JsonView(View.OrderView.class)
+    private int cost;
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +33,13 @@ public class OrderRestController {
     @Transactional
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createOrder(@RequestBody Order order) {
+        order.setCreated(new Date());
+        order.setStatus(Order.Status.NEW);
+        int cost = 0;
+        for(OrderItem item:order.getItems())
+            cost += item.getMenuItem().getPrice() * item.getAmount();
+
+        order.setCost(cost);
         Order o = orderRepository.save(order);
         for(OrderItem item:order.getItems()) {
             item.setOrder(o);

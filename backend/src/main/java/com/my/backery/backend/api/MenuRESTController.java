@@ -21,9 +21,11 @@ public class MenuRESTController {
     private MenuRepository menuRepository;
 
     @RequestMapping(method = RequestMethod.POST)
-    ResponseEntity<?> add(@RequestBody MenuItem item) {
-        MenuItem i = new MenuItem(item);
-        menuRepository.save(i);
+    ResponseEntity<?> add(@RequestBody List<MenuItem> items) {
+        for(MenuItem item : items) {
+            MenuItem i = new MenuItem(item);
+            menuRepository.save(i);
+        }
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 

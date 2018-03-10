@@ -1,5 +1,7 @@
 CREATE TABLE IF NOT EXISTS orders
 (
   order_id SERIAL PRIMARY KEY,
-  status INT NOT NULL
+  status INT NOT NULL,
+  created TIMESTAMP WITH TIME ZONE NOT NULL,
+  cost INT NOT NULL
 );
