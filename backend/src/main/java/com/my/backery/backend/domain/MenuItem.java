@@ -29,10 +29,15 @@ public class MenuItem {
     @JsonView(View.MenuView.class)
     private Double price;
 
+    @Column(name="icon_path")
+    @JsonView(View.MenuView.class)
+    private String iconPath;
+
     public MenuItem(MenuItem m) {
         id = m.getId();
         itemName = m.getItemName();
         price = m.getPrice();
+        iconPath = m.getIconPath();
     }
 
     @OneToMany(mappedBy = "menuItem")
