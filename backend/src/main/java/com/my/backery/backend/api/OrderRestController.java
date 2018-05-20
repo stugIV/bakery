@@ -3,6 +3,8 @@ package com.my.backery.backend.api;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.my.backery.backend.domain.Order;
 import com.my.backery.backend.domain.OrderItem;
+import com.my.backery.backend.domain.View;
+import com.my.backery.backend.service.MenuRepository;
 import com.my.backery.backend.service.OrderItemRepository;
 import com.my.backery.backend.service.OrderRepository;
 import org.slf4j.Logger;
@@ -30,14 +32,19 @@ public class OrderRestController {
     @Autowired
     private OrderRepository orderRepository;
 
+    @Autowired
+    private MenuRepository menuRepository;
+
     @Transactional
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity createOrder(@RequestBody Order order) {
         order.setCreated(new Date());
         order.setStatus(Order.Status.NEW);
         int cost = 0;
-        for(OrderItem item:order.getItems())
+        for(OrderItem item:order.getItems()) {
+            item.setMenuItem(menuRepository.findById(item.getMenuItem().getId()));
             cost += item.getMenuItem().getPrice() * item.getAmount();
+        }
 
         order.setCost(cost);
         Order o = orderRepository.save(order);

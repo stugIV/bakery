@@ -1,7 +1,6 @@
 package com.my.backery.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonView;
-import com.my.backery.backend.api.View;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +17,7 @@ public class MenuItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    @JsonView({View.MenuView.class, View.OrderView.class})
+    @JsonView({View.MenuView.class, View.OrderView.class, View.OrderItemView.class})
     private Integer id;
 
     @Column(name = "item_name")
@@ -33,11 +32,16 @@ public class MenuItem {
     @JsonView(View.MenuView.class)
     private String iconPath;
 
+    @Column(name = "time_to_bake", nullable = false)
+    @JsonView({View.MenuView.class, View.OrderView.class, View.OrderItemView.class})
+    private long timeToBake;
+
     public MenuItem(MenuItem m) {
         id = m.getId();
         itemName = m.getItemName();
         price = m.getPrice();
         iconPath = m.getIconPath();
+        timeToBake = m.getTimeToBake();
     }
 
     @OneToMany(mappedBy = "menuItem")

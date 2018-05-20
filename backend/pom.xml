@@ -19,10 +19,14 @@
         <flyway.version>4.2.0</flyway.version>
         <postgresql.driver.version>42.1.1</postgresql.driver.version>
         <spring.boot.version>1.5.8.RELEASE</spring.boot.version>
-        <lombok.version>RELEASE</lombok.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.terror.backery</groupId>
+            <artifactId>domain</artifactId>
+            <version>0.1</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>

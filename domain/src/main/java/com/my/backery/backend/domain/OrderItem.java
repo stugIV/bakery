@@ -2,7 +2,6 @@ package com.my.backery.backend.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.my.backery.backend.api.View;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,16 +24,16 @@ public class OrderItem implements Serializable {
     private Integer id;
 
     @Column(name = "amount")
-    @JsonView({View.OrderView.class, View.MenuView.class})
+    @JsonView({View.OrderView.class, View.MenuView.class, View.OrderItemView.class})
     private Integer amount;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
-    @JsonIgnore
+    @JsonView(View.OrderItemView.class)
     private Order order;
 
     @ManyToOne
     @JoinColumn(name = "menu_item")
-    @JsonView(View.OrderView.class)
+    @JsonView({View.OrderView.class, View.OrderItemView.class})
     private MenuItem menuItem;
 }
