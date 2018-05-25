@@ -27,7 +27,7 @@ public class MenuRESTController {
     private MenuRepository menuRepository;
 
     @RequestMapping(method = RequestMethod.POST)
-    ResponseEntity<?> add(@RequestBody List<MenuItem> items) {
+    public ResponseEntity<?> add(@RequestBody List<MenuItem> items) {
         for(MenuItem item : items) {
             MenuItem i = new MenuItem(item);
             menuRepository.save(i);
@@ -37,13 +37,13 @@ public class MenuRESTController {
 
     @RequestMapping(method = RequestMethod.GET)
     @JsonView(View.MenuView.class)
-    ResponseEntity get(){
+    public List<MenuItem> get(){
         List<MenuItem> menu = menuRepository.findAll();
-        return new ResponseEntity(menu, HttpStatus.OK);
+        return menu;
     }
 
     @RequestMapping(value = "/icons/{iconName}", method = RequestMethod.GET)
-    ResponseEntity<byte[]> icon(@PathVariable("iconName") String iconName) throws IOException {
+    public ResponseEntity<byte[]> icon(@PathVariable("iconName") String iconName) throws IOException {
         InputStream in = getClass().getResource("/images/"+iconName + ".png").openStream();
         byte[] media = IOUtils.toByteArray(in);
 
