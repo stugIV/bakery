@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2018-06-03T14:18:31.215Z",
+	"__export_date": "2018-06-12T13:53:53.471Z",
 	"__export_source": "insomnia.desktop.app:v5.16.6",
 	"resources": [
 		{
@@ -73,7 +73,7 @@
 			"authentication": {},
 			"body": {
 				"mimeType": "application/json",
-				"text": "[\n\t{\n\t\t\"itemName\":\"Hot Dog\",\n\t\t\"price\":\"45\",\n\t\t\"timeToBake\" : 10,\n\t\t\"iconPath\" : \"/menu/icons/hot_dog.png\"\n\t},\n\t{\n\t\t\"itemName\" : \"Coffee\",\n\t\t\"price\" : \"6.7\",\n\t\t\"timeToBake\" : 25,\n\t\t\"iconPath\" : \"/menu/icons/coffee.png\"\n\t},\n\t{\n\t\t\"itemName\" : \"Croissant\",\n\t\t\"price\" : \"14.5\",\n\t\t\"timeToBake\" : 26,\n\t\t\"iconPath\" : \"/menu/icons/croissant.png\"\n\t}\n]"
+				"text": "[\n\t{\n\t\t\"itemName\":\"Hot Dog\",\n\t\t\"price\":\"45\",\n\t\t\"timeToBake\" : 10,\n\t\t\"iconPath\" : \"/menu/icons/hot_dog.png\"\n\t},\n\t{\n\t\t\"itemName\" : \"Coffee\",\n\t\t\"price\" : \"6.7\",\n\t\t\"timeToBake\" : 10,\n\t\t\"iconPath\" : \"/menu/icons/coffee.png\"\n\t},\n\t{\n\t\t\"itemName\" : \"Croissant\",\n\t\t\"price\" : \"14.5\",\n\t\t\"timeToBake\" : 26,\n\t\t\"iconPath\" : \"/menu/icons/croissant.png\"\n\t}\n]"
 			},
 			"created": 1518359191217,
 			"description": "",
@@ -87,7 +87,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1518359191217,
 			"method": "POST",
-			"modified": 1526841852576,
+			"modified": 1528811594169,
 			"name": "menu item",
 			"parameters": [],
 			"parentId": "fld_bd08d19d6711481285f6a24de7b8fdb4",
@@ -184,8 +184,8 @@
 			"isPrivate": false,
 			"metaSortKey": -1518427340896.75,
 			"method": "POST",
-			"modified": 1526842115089,
-			"name": "orders",
+			"modified": 1528811604524,
+			"name": "order",
 			"parameters": [],
 			"parentId": "fld_44f3f888e4464b3e8a38f1479257b06f",
 			"settingDisableRenderRequestBody": false,
@@ -247,6 +247,37 @@
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
 			"url": "{{ service_base_url  }}/order_item",
+			"_type": "request"
+		},
+		{
+			"_id": "req_c6517e11188548d9a2b22cf0a116bd25",
+			"authentication": {},
+			"body": {
+				"mimeType": "application/json",
+				"text": "{\n\t\"due\" : \"2012-04-23T18:35:43.511Z\",\n\t\"items\": [\n\t\t{\n\t\t\t\"amount\":1,\n\t\t\t\"menuItem\":{\n\t\t\t\t\"id\":3\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"amount\":2,\n\t\t\t\"menuItem\": {\n\t\t\t\t\"id\":2\n\t\t\t}\n\t\t}\n\t]\n}"
+			},
+			"created": 1528811494137,
+			"description": "",
+			"headers": [
+				{
+					"id": "pair_5fe38c0c94d7427bbc18959d11ac5b3e",
+					"name": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"isPrivate": false,
+			"metaSortKey": -1518410303489.3125,
+			"method": "POST",
+			"modified": 1528811608439,
+			"name": "order 2",
+			"parameters": [],
+			"parentId": "fld_44f3f888e4464b3e8a38f1479257b06f",
+			"settingDisableRenderRequestBody": false,
+			"settingEncodeUrl": true,
+			"settingRebuildPath": true,
+			"settingSendCookies": true,
+			"settingStoreCookies": true,
+			"url": "{{ service_base_url  }}/order",
 			"_type": "request"
 		}
 	]
