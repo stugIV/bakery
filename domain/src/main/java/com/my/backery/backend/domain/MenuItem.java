@@ -21,7 +21,7 @@ public class MenuItem {
     private Integer id;
 
     @Column(name = "item_name")
-    @JsonView({View.MenuView.class, View.OrderView.class})
+    @JsonView({View.MenuView.class, View.OrderView.class, View.OrderItemView.class})
     private String itemName;
 
     @Column(name = "price", nullable = false)

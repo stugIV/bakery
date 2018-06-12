@@ -10,7 +10,7 @@
 
     <groupId>com.terror.backery</groupId>
     <artifactId>domain</artifactId>
-    <version>0.2</version>
+    <version>0.3</version>
 
 	<dependencies>
 		<dependency>
@@ -31,4 +31,5 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+  <build>
 </project>
