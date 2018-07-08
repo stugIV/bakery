@@ -1,19 +1,21 @@
 package com.my.backery.backend.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name  = "order_item")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class OrderItem implements Serializable {
 
     private static final long SerialVersionUID = -6759934985430646146L;
@@ -36,4 +38,6 @@ public class OrderItem implements Serializable {
     @JoinColumn(name = "menu_item")
     @JsonView({View.OrderView.class, View.OrderItemView.class})
     private MenuItem menuItem;
+
+    private Date toStart;
 }

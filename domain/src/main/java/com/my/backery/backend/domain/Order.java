@@ -29,6 +29,7 @@ public class Order implements Serializable {
     private List<OrderItem> items;
 
     @Column(name="created")
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonView({View.OrderView.class, View.OrderItemView.class})
     private Date created;
 
