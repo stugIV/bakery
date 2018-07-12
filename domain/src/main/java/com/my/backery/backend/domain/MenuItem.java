@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -33,8 +34,9 @@ public class MenuItem {
     private String iconPath;
 
     @Column(name = "time_to_bake", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonView({View.MenuView.class, View.OrderView.class, View.OrderItemView.class})
-    private long timeToBake;
+    private Date timeToBake;
 
     public MenuItem(MenuItem m) {
         id = m.getId();

@@ -1,7 +1,7 @@
 {
 	"_type": "export",
 	"__export_format": 3,
-	"__export_date": "2018-06-12T13:53:53.471Z",
+	"__export_date": "2018-07-12T14:59:46.488Z",
 	"__export_source": "insomnia.desktop.app:v5.16.6",
 	"resources": [
 		{
@@ -73,7 +73,7 @@
 			"authentication": {},
 			"body": {
 				"mimeType": "application/json",
-				"text": "[\n\t{\n\t\t\"itemName\":\"Hot Dog\",\n\t\t\"price\":\"45\",\n\t\t\"timeToBake\" : 10,\n\t\t\"iconPath\" : \"/menu/icons/hot_dog.png\"\n\t},\n\t{\n\t\t\"itemName\" : \"Coffee\",\n\t\t\"price\" : \"6.7\",\n\t\t\"timeToBake\" : 10,\n\t\t\"iconPath\" : \"/menu/icons/coffee.png\"\n\t},\n\t{\n\t\t\"itemName\" : \"Croissant\",\n\t\t\"price\" : \"14.5\",\n\t\t\"timeToBake\" : 26,\n\t\t\"iconPath\" : \"/menu/icons/croissant.png\"\n\t}\n]"
+				"text": "[\n\t{\n\t\t\"itemName\":\"Hot Dog\",\n\t\t\"price\":\"45\",\n\t\t\"timeToBake\" : \"2018-07-08T0:0:10Z\",\n\t\t\"iconPath\" : \"/menu/icons/hot_dog.png\"\n\t},\n\t{\n\t\t\"itemName\" : \"Coffee\",\n\t\t\"price\" : \"6.7\",\n\t\t\"timeToBake\" : 10,\n\t\t\"iconPath\" : \"/menu/icons/coffee.png\"\n\t},\n\t{\n\t\t\"itemName\" : \"Croissant\",\n\t\t\"price\" : \"14.5\",\n\t\t\"timeToBake\" : 26,\n\t\t\"iconPath\" : \"/menu/icons/croissant.png\"\n\t}\n]"
 			},
 			"created": 1518359191217,
 			"description": "",
@@ -87,7 +87,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1518359191217,
 			"method": "POST",
-			"modified": 1528811594169,
+			"modified": 1531066724783,
 			"name": "menu item",
 			"parameters": [],
 			"parentId": "fld_bd08d19d6711481285f6a24de7b8fdb4",
@@ -237,7 +237,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1518461415711.625,
 			"method": "GET",
-			"modified": 1526837404479,
+			"modified": 1531407530555,
 			"name": "orderItems",
 			"parameters": [],
 			"parentId": "fld_44f3f888e4464b3e8a38f1479257b06f",
@@ -246,7 +246,7 @@
 			"settingRebuildPath": true,
 			"settingSendCookies": true,
 			"settingStoreCookies": true,
-			"url": "{{ service_base_url  }}/order_item",
+			"url": "{{ service_base_url  }}/order_item?date=2017-07-12T17:58:17+0300",
 			"_type": "request"
 		},
 		{
@@ -254,7 +254,7 @@
 			"authentication": {},
 			"body": {
 				"mimeType": "application/json",
-				"text": "{\n\t\"due\" : \"2012-04-23T18:35:43.511Z\",\n\t\"items\": [\n\t\t{\n\t\t\t\"amount\":1,\n\t\t\t\"menuItem\":{\n\t\t\t\t\"id\":3\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"amount\":2,\n\t\t\t\"menuItem\": {\n\t\t\t\t\"id\":2\n\t\t\t}\n\t\t}\n\t]\n}"
+				"text": "{\n\t\"due\" : \"2018-04-23T18:35:43.511Z\",\n\t\"items\": [\n\t\t{\n\t\t\t\"amount\":1,\n\t\t\t\"menuItem\":{\n\t\t\t\t\"id\":3\n\t\t\t}\n\t\t},\n\t\t{\n\t\t\t\"amount\":2,\n\t\t\t\"menuItem\": {\n\t\t\t\t\"id\":2\n\t\t\t}\n\t\t}\n\t]\n}"
 			},
 			"created": 1528811494137,
 			"description": "",
@@ -268,7 +268,7 @@
 			"isPrivate": false,
 			"metaSortKey": -1518410303489.3125,
 			"method": "POST",
-			"modified": 1528811608439,
+			"modified": 1528818164335,
 			"name": "order 2",
 			"parameters": [],
 			"parentId": "fld_44f3f888e4464b3e8a38f1479257b06f",

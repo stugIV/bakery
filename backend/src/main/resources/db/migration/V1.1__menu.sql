@@ -4,5 +4,5 @@ CREATE TABLE IF NOT EXISTS menu
   item_name VARCHAR,
   price REAL NOT NULL,
   icon_path VARCHAR,
-  time_to_bake INT NOT NULL
+  time_to_bake TIMESTAMP NOT NULL
 );

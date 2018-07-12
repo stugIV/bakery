@@ -38,6 +38,4 @@ public class OrderItem implements Serializable {
     @JoinColumn(name = "menu_item")
     @JsonView({View.OrderView.class, View.OrderItemView.class})
     private MenuItem menuItem;
-
-    private Date toStart;
 }
